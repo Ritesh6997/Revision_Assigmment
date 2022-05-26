@@ -1,0 +1,46 @@
+{
+  "todos": [
+    {
+      "title": "go to gym ",
+      "date": "2022-05-29",
+      "category": "Personal",
+      "where": "todo",
+      "id": 1
+    },
+    {
+      "title": "learn React",
+      "date": "2022-05-19",
+      "category": "Official",
+      "where": "inprogress",
+      "id": 2
+    },
+    {
+      "title": "learn Driving",
+      "date": "2022-05-09",
+      "category": "Others",
+      "where": "done",
+      "id": 3
+    },
+    {
+      "title": "hangout with friends",
+      "date": "2022-05-10",
+      "category": "Personal",
+      "where": "todo",
+      "id": 4
+    },
+    {
+      "title": "Dancing",
+      "date": "2022-05-25",
+      "category": "Others",
+      "where": "inprogress",
+      "id": 5
+    },
+    {
+      "title": "Goa Plane",
+      "date": "2022-07-25",
+      "category": "Personal",
+      "where": "todo",
+      "id": 6
+    }
+  ]
+}

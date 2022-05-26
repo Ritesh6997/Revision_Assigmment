@@ -1,0 +1,23 @@
+#inptform{
+        display: flex;
+        flex-direction: column;
+        width:40%;
+        margin:auto;
+        padding:"20px";
+        background-color: whitesmoke;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    }
+
+.inpt{
+    padding:12px;
+    text-align: center;
+    margin:2%;
+    font-size: larger;
+}
+
+.listdiv{
+    padding:10px;
+    font-size: 20px;
+    text-align:left ;
+    margin-left: 40%;    
+}

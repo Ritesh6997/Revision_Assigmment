@@ -1,0 +1,24 @@
+.list{
+  margin-top: 20px;
+  width: 200px;
+   border:2px solid none;
+   height:300px;
+   border-top:2px solid none;
+}
+
+
+@media screen and (min-width:0px) and (max-width:320px) {
+  .list{
+    display:grid;
+   grid-template-columns:100px ;
+   border:2px solid none;
+}  
+
+}
+@media screen and (min-width:320px) and (max-width:550px) {
+  .list{
+    display:grid;
+   grid-template-columns:140px;
+   border:2px solid none;
+}  
+}
