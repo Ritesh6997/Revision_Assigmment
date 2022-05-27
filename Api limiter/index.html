@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <title>Weather app in node.js Rate Limiting</title>
+  </head>
+  <body>
+   <br><br>
+    <div class="container">
+      <h1 class="text-center">
+        Simple Weather App
+      </h1>
+      <br><br>
+      <div class="weather text-center"></div>
+      <br><br>
+      <form id="weather-form">
+      <div class="form-group container">
+        <input type="text" id="city-input" placeholder="Enter City Name" required class="form-control">
+      </div>
+      <div class="form-group container">
+        <button class="btn btn-danger btn-block">
+          Get Current Weather
+        </button>
+      </div>
+    </form>
+    </div>
+  <script>
+        const weatherDisplay = document.querySelector(".weather");
+      const weatherForm = document.querySelector("#weather-form");
+      const cityInput = document.querySelector("#city-input");
+ 
+      // Fetch weather data from API
+      const fetchWeather = async (city) => {
+        const url = `/getweather?q=${city}`;
+ 
+        const res = await fetch(url);
+ 
+        if (res.status === 404) {
+          alert("City not found");
+          return;
+        }
+ 
+        if (res.status === 401) {
+          alert("Invalid API Key");
+          return;
+        }
+ 
+        if(res.status === 429){
+          alert("Too many Requests Please Slow Down")
+          return;
+        }
+        console.log(res.status)
+        const data = await res.json();
+        console.log("datam",data)
+ 
+        const displayData = {
+          // console.log("datam",data),
+          city: data.name,
+          temp: data.main.temp,
+        };
+ 
+        addWeatherToDOM(displayData);
+      };
+ 
+      // Add display data to DOM
+      const addWeatherToDOM = (data) => {
+        weatherDisplay.innerHTML = `
+    <h1>Weather in ${data.city}</h1>
+    <h2>${data.temp} °C</h2>
+  `;
+        cityInput.value = "";
+      };
+ 
+     
+ 
+      // Event listener for form submission
+      weatherForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+ 
+        if (cityInput.value === "") {
+          alert("Please enter a city");
+        } else {
+          fetchWeather(cityInput.value);
+        }
+      });
+ 
+      // Initial fetch
+      fetchWeather("Delhi");
+    </script>
+      
+    </body>
+</html>
