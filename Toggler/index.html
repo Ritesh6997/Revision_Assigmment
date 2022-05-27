@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div>hello</div>
+    <button id="Togglebtn" >
+        Toggle
+    </button>
+</body>
+</html>
+
+<script>
+    let c=0;
+    function toggler(a,b,c1) {
+        return ()=>{
+            if (c == 0) {
+                console.log(a)
+            }
+            else if (c == 1) {
+                console.log(b)
+            }
+            else {
+                console.log(c1)
+            }
+            c++;
+            if (c == 3) {
+                c = 0;
+            }
+        }
+    }
+
+    const toggle = toggler(10, 20, 30)
+    console.log(toggle);
+    const btn=document.getElementById("Togglebtn");
+    btn.addEventListener("click", toggle);
+
+
+</script>

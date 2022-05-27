@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <button id="throttle">Click Me</button>
+    <div id="displaydiv"></div>
+    <script>
+        const btn = document.querySelector("#throttle");
+
+        // Throttling Function
+        const throttleFunction = (func, delay) => {
+
+            // Previously called time of the function
+            let prev = 0;
+            return (...args) => {
+                // Current called time of the function
+                let now = new Date().getTime();
+
+                // Logging the difference between previously
+                // called and current called timings
+                console.log(now - prev, delay);
+                document.getElementById("displaydiv").innerHTML = `Throttling time ${now-prev}`;
+                // If difference is greater than delay call
+                // the function again.
+                if (now - prev > delay) {
+                    prev = now;
+
+                    // "..." is the spread operator here
+                    // returning the function with the
+                    // array of arguments
+                    return func(...args);
+                }
+            }
+        }
+        btn.addEventListener("click", throttleFunction(() => {
+            console.log("button is clicked")
+            document.getElementById("displaydiv").innerHTML="Button is Clicked";
+        }, 1500));
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,
+                       initial-scale=1.0" />
+    <title>
+        JavaScript | Without Throttling
+    </title>
+</head>
+
+<body>
+    <button id="nothrottle">Click Me</button>
+    <script>
+
+        // Selected button with the given id
+        const btn = document.querySelector("#nothrottle");
+
+        // Add event listener to the button
+        // to listen the click event
+        btn.addEventListener("click", () => {
+            console.log("button is clicked");
+        });
+    </script>
+</body>
+
+</html> -->
