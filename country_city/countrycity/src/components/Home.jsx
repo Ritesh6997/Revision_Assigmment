@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -40,8 +40,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function Home() {
   const dispatch = useDispatch();
   const CityData = useSelector((store) => store.CitysName.AddCity);
-    const CountryData = useSelector((store) => store.CountrysName.AddCountry);
-  console.log(CityData, "cityDataaa111")
+  const CountryData = useSelector((store) => store.CountrysName.AddCountry);
+  console.log(CityData, "cityDataaa111");
+  const [filterdata, setFilter] = useState("");
   useEffect(() => {
     dispatch(getCountryData());
     dispatch(getCityData());
@@ -49,9 +50,7 @@ export default function Home() {
   const handleSort = (e) => {
     dispatch(Sortbypopulation(e));
   }
-  const handleFilter=()=>{
-    console.log("Filter")
-  }
+  
   return (
     <>
       <Stack direction="row" spacing={2}>
@@ -83,7 +82,7 @@ export default function Home() {
           label="Age"
           value={Select}
           onChange={(e) => {
-            handleFilter(e.target.value);
+            setFilter(e.target.value);
           }}
         >
           <MenuItem value="">
@@ -107,7 +106,7 @@ export default function Home() {
           </TableHead>
           <TableBody>
             {CityData.length !== 0
-              ? CityData.map((ele) => (
+              ? CityData.filter(el=>el.country.includes(filterdata)).map((ele) => (
                   <StyledTableRow key={ele.id}>
                     <StyledTableCell component="th" scope="row" align="center">
                       {ele.id}
