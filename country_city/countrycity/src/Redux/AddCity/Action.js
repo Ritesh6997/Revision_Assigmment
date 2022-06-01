@@ -10,6 +10,12 @@ export function AddNewCity(value) {
     payload:value,
   }
 };
+export function Sortbypopulation(value) {
+  return {
+    type: 'Sort',
+    payload:value,
+  }
+};
 export function EditCity(value) {
   return {
     type: 'Edit_City',
@@ -23,7 +29,6 @@ export function DeleteCity(value) {
   }
 };
 export const getCityData = ()=> async (dispatch) => {
-    console.log("1234cart");
     const res = await fetch(`http://localhost:8080/citydata`);
     const CityData = await res.json();
     console.log(CityData);

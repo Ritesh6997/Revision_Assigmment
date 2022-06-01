@@ -11,6 +11,11 @@ export const AddCityReducer = (store = initalState, { type, payload }) => {
                 ...store, AddCity
                     : [...store.AddCity,payload]
             };  
+         case "Sort":
+            return {
+                ...store, AddCity
+                    : [...store.AddCity].sort((a,b)=>{return (payload==="Ace"?(a.population-b.population):(b.population-a.population))})
+            }; 
         case "Edit_City":
             return {
                 ...store, AddCity

@@ -1,0 +1,67 @@
+question 1: Explain briefly what happens when you hit a url? explain DNS lookup
+ans:At that time browser lookup for the domain and than send HTTP request to the server and then server send a response and browser provides us result.
+full form of DNS is Domain Nmae System .The DNS lookup tool finds the IP address of a certain domain name. The results include the IP addresses in the DNS records received from the name servers.
+
+question 2:What is a URLs full form? Explain what a url is and the four parts it consists of The protocol in use The hostname of the server The location of the file The arguments to the file?
+ans:Uniform Resourse locator A URL is nothing more than the address of a given unique resource on the Web. In theory, each valid URL points to a unique resource. Such resources can be an HTML page, a CSS document, an image etc
+four components------
+1.A scheme. The scheme identifies the protocol to be used to access the resource on the Internet. It can be HTTP (without SSL) or HTTPS (with SSL).
+2.A host. The host name identifies the host that holds the resource. For example, www.example.com. A server provides services in the name of the host, but hosts and servers do not have a one-to-one mapping. Refer to Host names.
+Host names can also be followed by a port number.
+3.A path. The path identifies the specific resource in the host that the web client wants to access. For example, /software/htp/cics/index.html.
+4.A query string. The query string is usually a string of name and value pairs; for example, term=bluebird. Name and value pairs are separated from each other by an ampersand (&); for example, term=bluebird&source=browser-search.
+
+
+Question 3:What is HTTP protocol?
+ans:HTTP stands for HyperText Transfer Protocol.
+It is a protocol used to access the data on the World Wide Web (www).
+The HTTP protocol can be used to transfer the data in the form of plain text, hypertext, audio, video, and so on.
+This protocol is known as HyperText Transfer Protocol because of its efficiency that allows us to use in a hypertext environment where there are rapid jumps from one document to another document.
+
+
+Question 4:what is TCP Protocol?
+ans:TCP stands for Transmission Control Protocol a communications standard that enables application programs and computing devices to exchange messages over a network. It is designed to send packets across the internet and ensure the successful delivery of data and messages over networks.
+
+
+Question 5:Explain all the different HTTP methods?
+ans:The primary or most commonly-used HTTP methods are POST, GET, PUT, PATCH, and DELETE. These methods correspond to create, read, update, and delete (or CRUD) operations, respectively.
+
+
+Question 6:What are HTTP headers?
+ans:HTTP headers let the client and the server pass additional information with an HTTP request or response. An HTTP header consists of its case-insensitive name followed by a colon (:), then by its value.
+case-insensitive-(computer science) Treating or interpreting upper- and lowercase letters as being the same.
+
+
+Question 7:What are some HTTP response codes? what does it mean? 2xx, 3xx, 4xx, 5xx?
+ans:2xx successful – the request was successfully received, understood, and accepted. 3xx redirection – further action needs to be taken in order to complete the request. 4xx client error – the request contains bad syntax or cannot be fulfilled. 5xx server error – the server failed to fulfil an apparently valid request.
+
+Question 8:What does cache control on http response mean?
+ans:Cache-Control is a HTTP cache header that contains a set of parameters to define the browser’s caching policies in the client requests and server responses. When a client makes a request to the server, the browser can cache, or store copies of resources for faster access and lower late.
+
+
+Question 9:What is polling?
+ans:In polling is not a hardware mechanism, its a protocol in which CPU steadily checks whether the device needs attention. Wherever device tells process unit that it desires hardware processing, in polling process unit keeps asking the I/O device whether or not it desires CPU processing.
+
+Question 10:What is long polling?
+ans:It is a technology client requests for data from the server besides waiting for an instant response or essentially entails making an HTTP request to a server and then maintaining the connection open to enable the server to reply later.
+
+Question 11 : What are web sockets?
+ans: WebSocket is bidirectional, a full-duplex protocol that is used in the same scenario of client-server communication, unlike HTTP it starts from ws:// or wss://
+ex-Chat application,gaming applications
+
+Question 12 : How is web sockets different from HTTP?
+ans:WebSocket can be used if we want any real-time updated or continuous streams of data that are being transmitted over the network. If we want to fetch old data, or want to get the data only once to process it with an application we should go with HTTP protocol, old data which is not required very frequently or fetched only once can be queried by the simple HTTP request, so in this scenario, it’s better not use WebSocket
+
+Question 13 : What is HTTPS?
+ans:TTPS (Hypertext Transfer Protocol Secure) is an internet communication protocol that protects the integrity and confidentiality of data between the user's computer and the site. Users expect a secure and private online experience when using a website. We encourage you to adopt HTTPS in order to protect your users' connections to your website, regardless of the content on the site.
+
+Question 14 : What is Cross Origin Resource Sharing? ( CORS ) Why do we need it?
+ans: Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any origins (domain, scheme, or port) other than its own from which a browser should permit loading resources CORS also relies on a mechanism by which browsers make a "preflight" request to the server hosting the cross-origin resource, in order to check that the server will permit the actual request. In that preflight, the browser sends headers that indicate the HTTP method and headers that will be used in the actual request.
+
+Question 15 :What does Access-Control-Allow-Origin header do?
+ans: The Access-Control-Allow-Origin header is included in the response from one website to a request originating from another website, and identifies the permitted origin of the request.
+
+
+
+
+const Promise=new  Promise(full,reject){

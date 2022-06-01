@@ -1,0 +1,284 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs24\lang9 Question-1:- How to add comments on css?\par
+Answer :- \b0\fs22 To comment in CSS, simply place your plain text inside /* */ marks. This tells the browser that they are notes and should not be rendered on the front end.\par
+\par
+\b\fs24 Question-2:- Why do we use pseudo-class?\par
+Answer :- \b0\fs22 A Pseudo class in CSS is used to define the special state of an element. It can be combined with a CSS selector to add an effect to existing elements based on their states. A CSS pseudo-class is a keyword added to a selector that specifies a special state of the selected element(s). For example, :hover can be used to change a button's color when the user's pointer hovers over it. Pseudo-classes let you apply a style to an element not only in relation to the content of the document tree, but also in relation to external factors like the history of the navigator (:visited, for example), the status of its content (like :checked on certain form elements), or the position of the mouse (like :hover, which lets you know if the mouse is over an element or not).\par
+\par
+\b\fs24 Question-3:- How is specificity applied?\par
+Answer:- \b0\fs22 When more than one set of CSS rules apply to the same element, the browser will have to decide which specific set will be applied to the element. The rules the browser follows are collectively called Specificity\par
+\par
+Specificity Rules include:\par
+\par
+CSS style applied by referencing external stylesheet has lowest precedence and is overridden by Internal and inline CSS.\par
+Internal CSS is overridden by inline CSS.\par
+Inline CSS has highest priority and overrides all other selectors.\par
+Specificity Hierarchy :Every element selector has a position in the Hierarchy.\par
+\par
+Inline style: Inline style has highest priority.\par
+\par
+Identifiers(ID): ID have the second highest priority.\par
+\par
+Classes, pseudo-classes and attributes: Classes, pseudo-classes and attributes are come next.\par
+\par
+Elements and pseudo-elements: Elements and pseudo-elements have lowest priority.\par
+Note:\par
+\par
+When two or more selectors have equal specificity, the last(latest) one counts.\par
+Universal selectors like body and inherited selectors have least specificity.\par
+\b\fs24\par
+Question-4:- What method allows an element to be moved from its current position?\par
+Answer:- \b0\fs22 translate() method allows an element to be moved from its current position.\par
+\par
+\b\fs24 Question-5:- what properties does flex model have?\par
+Answer:- \b0\fs22 The flex CSS shorthand property sets how a flex item will grow or shrink to fit the space available in its flex container. The flex property is a shorthand property for:\par
+\par
+flex-grow\par
+flex-shrink\par
+flex-basis\par
+The flex property sets the flexible length on flexible items.\par
+\par
+\par
+Note: If the element is not a flexible item, the flex property has no effect.\par
+\par
+\b\fs24 Question-6:- What is the difference between flex and grids?\par
+Answer:- \b0\fs22 The basic difference between CSS Grid Layout and CSS Flexbox Layout is that flexbox was designed for layout in one dimension - either a row or a column. Grid was designed for two-dimensional layout - rows, and columns at the same time. \par
+The approach of CSS Grid is the layout first, while the Flexbox approach is primarily the content.\par
+The Flexbox layout is best suited to application components and small-scale layouts, while the Grid layout is designed for larger-scale layouts that are not linear in design.\par
+CSS grid is for layout, Flexbox is for alignment\par
+\par
+\b\fs24 Question-7:- Give an example where we have to use grids and where you have to use flexbox?\par
+Answer:- \par
+\b0\fs22\par
+\par
+\b\fs24 Question :- What are combinators? give examples of how you can use them?\par
+Answer:-  \b0\fs22 Combinators,  combine other selectors in a way that gives them a useful relationship to each other and the location of content in the document. You can combine any of the selectors that we discovered in previous lessons with combinators in order to pick out part of your document. For example, if we want to select list items with a class of "a", which are direct children of a <ul>, I could use the following.\par
+\par
+ul > li[class="a"]  \{  \}\par
+\b\fs24\par
+Question:- What does object-fit do?\par
+Answer:- \b0\fs22 The object-fit CSS property sets how the content of a replaced element, such as an <img> or <video>, should be resized to fit its container.\par
+\par
+You can alter the alignment of the replaced element's content object within the element's box using the object-position property.\par
+Syntax :-\par
+object-fit: contain;\par
+object-fit: cover;\par
+object-fit: fill;\par
+object-fit: none;\par
+object-fit: scale-down;\par
+\par
+/* Global values */\par
+object-fit: inherit;\par
+object-fit: initial;\par
+object-fit: revert;\par
+object-fit: revert-layer;\par
+object-fit: unset;\par
+The object-fit property is specified as a single keyword chosen from the list of values below.\par
+\par
+\par
+\b\fs24 Questiom:- What does rotate do?\par
+Answer:- \b0\fs22 The rotate() CSS function defines a transformation that rotates an element around a fixed point on the 2D plane, without deforming it. Its result is a <transform-function> data type.\par
+\par
+The fixed point that the element rotates around \f1\emdash  mentioned above \emdash  is also known as the transform origin. This defaults to the center of the element, but you can set your own custom transform origin using the transform-origin property.\par
+\par
+Syntax\par
+The amount of rotation created by rotate() is specified by an <angle>. If positive, the movement will be clockwise; if negative, it will be counter-clockwise. A rotation by 180\f0\'b0 is called point reflection.\par
+\par
+rotate(a)\par
+Copy to Clipboard\par
+Values\par
+a\par
+Is an <angle> representing the angle of the rotation. The direction of rotation depends on the writing direction. In a left-to-right context, a positive angle denotes a clockwise rotation, a negative angle a counter-clockwise one. In a right-to-left context, a positive angle denotes a counter-clockwise rotation, a negative angle a clockwise one.\par
+Combining rotation with another transformation:-\par
+If you want apply multiple transformations to an element, be careful about the order in which you specify your transformations. For example, if you rotate before translating, the translation will be along the new axis of rotation!\par
+\par
+\b\fs24 Question:- What rule can be used to define animations?\par
+Answer:- \b0\fs22 The @keyframes rule specifies the animation code.\par
+\par
+The animation is created by gradually changing from one set of CSS styles to another.\par
+\par
+The animation shorthand CSS property applies an animation between styles. It is a shorthand for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, and animation-play-state.\par
+/* @keyframes duration | easing-function | delay |\par
+iteration-count | direction | fill-mode | play-state | name */\par
+animation: 3s ease-in 1s 2 reverse both paused slidein;\par
+\par
+/* @keyframes name | duration | easing-function | delay */\par
+animation: slidein 3s linear 1s;\par
+\par
+/* @keyframes name | duration */\par
+animation: slidein 3s;\par
+\par
+\par
+During the animation, you can change the set of CSS styles many times.\par
+\par
+Specify when the style change will happen in percent, or with the keywords "from" and "to", which is the same as 0% and 100%. 0% is the beginning of the animation, 100% is when the animation is complete.\par
+\par
+Tip: For best browser support, you should always define both the 0% and the 100% selectors.\par
+\par
+Note: Use the animation properties to control the appearance of the animation, and also to bind the animation to selectors.\par
+\par
+Note: The !important rule is ignored in a keyframe (See last example on this page).\par
+\par
+\par
+\b\fs24 Question:- When working with attribute selectors, how can you select elements which contain a particular attribute value?\par
+Answer:- \b0\fs22 The CSS attribute selector matches elements based on the presence or value of a given attribute.\par
+\par
+/* <a> elements with a title attribute */\par
+a[title] \{\par
+  color: purple;\par
+\}\par
+\par
+/* <a> elements with an href matching "{{\field{\*\fldinst{HYPERLINK https://example.org }}{\fldrslt{https://example.org\ul0\cf0}}}}\f0\fs22 " */\par
+a[href="https://example.org"] \{\par
+  color: green;\par
+\}\par
+\par
+/* <a> elements with an href containing "example" */\par
+a[href*="example"] \{\par
+  font-size: 2em;\par
+\}\par
+\par
+/* <a> elements with an href ending ".org" */\par
+a[href$=".org"] \{\par
+  font-style: italic;\par
+\}\par
+\par
+/* <a> elements whose class attribute contains the word "logo" */\par
+a[class~="logo"] \{\par
+  padding: 2px;\par
+\}\par
+Copy to Clipboard\par
+Syntax\par
+[attr]\par
+Represents elements with an attribute name of attr.\par
+\par
+[attr=value]\par
+Represents elements with an attribute name of attr whose value is exactly value.\par
+\par
+[attr~=value]\par
+Represents elements with an attribute name of attr whose value is a whitespace-separated list of words, one of which is exactly value.\par
+\par
+[attr|=value]\par
+Represents elements with an attribute name of attr whose value can be exactly value or can begin with value immediately followed by a hyphen, - (U+002D). It is often used for language subcode matches.\par
+\par
+[attr^=value]\par
+Represents elements with an attribute name of attr whose value is prefixed (preceded) by value.\par
+\par
+[attr$=value]\par
+Represents elements with an attribute name of attr whose value is suffixed (followed) by value.\par
+\par
+[attr*=value]\par
+Represents elements with an attribute name of attr whose value contains at least one occurrence of value within the string.\par
+\par
+[attr operator value i]\par
+Adding an i (or I) before the closing bracket causes the value to be compared case-insensitively (for characters within the ASCII range).\par
+\par
+[attr operator value s] Experimental\par
+Adding an s (or S) before the closing bracket causes the value to be compared case-sensitively (for characters within the ASCII range).\par
+\b\fs24\par
+Question:- What does @media do?\par
+Answer:- \b0\fs22 The @media CSS at-rule can be used to apply part of a style sheet based on the result of one or more media queries. With it, you specify a media query and a block of CSS to apply to the document if and only if the media query matches the device on which the content is being used.\par
+Syntax:-\par
+The @media at-rule may be placed at the top level of your code or nested inside any other conditional group at-rule.\par
+\par
+/* At the top level of your code */\par
+@media screen and (min-width: 900px) \{\par
+  article \{\par
+    padding: 1rem 3rem;\par
+  \}\par
+\}\par
+\par
+/* Nested within another conditional at-rule */\par
+@supports (display: flex) \{\par
+  @media screen and (min-width: 900px) \{\par
+    article \{\par
+      display: flex;\par
+    \}\par
+  \}\par
+\}\par
+\par
+\par
+\b\fs24 Question:- What can be used to override properties of an element?\par
+Answer:- \b0\fs22 To override the CSS properties of a class using another class, we can use the !important directive. In CSS, !important means \ldblquote this is important\rdblquote , and the property:value pair that has this directive is always applied even if the other element has higher specificity.\par
+Override Global Variable With Local Variable:-\par
+From the previous page we have learned that global variables can be accessed/used through the entire document, while local variables can be used only inside the selector where it is declared.\par
+\b\fs24\par
+Question:- How can you select every alternate elements in a list of elements using css?\par
+Answer:- \b0\fs22 The:nth-child() selector in CSS is used to match the elements based on their position in a group of siblings. It matches every element that is the nth-child. The: even and: odd pseudo-class is used with the list of items such as paragraph, article items which is basically a list content. \par
+\par
+odd: The use of odd pseudo-class in any list item that will affect only the odd index number list. \par
+Syntax:\par
+li:nth-child( odd ) \{\par
+    // CSS Property   \par
+\}\par
+even: The use of even pseudo-class in any list item that will effect only the even index number list. \par
+Syntax:\par
+li:nth-child( even ) \{\par
+    // CSS Property\par
+\}\par
+\b\fs24\par
+Question:- What is the ranking of selectors with respect to specificity?\par
+Answer:- \b0\fs22 If there are two or more CSS rules that point to the same element, the selector with the highest specificity value will "win", and its style declaration will be applied to that HTML element.\par
+\par
+Think of specificity as a score/rank that determines which style declaration are ultimately applied to an element.\par
+How to Calculate Specificity?\par
+Memorize how to calculate specificity!\par
+\par
+Start at 0, add 100 for each ID value, add 10 for each class value (or pseudo-class or attribute selector), add 1 for each element selector or pseudo-element.\par
+\par
+Note: Inline style gets a specificity value of 1000, and is always given the highest priority!\par
+\par
+Note 2: There is one exception to this rule: if you use the !important rule, it will even override inline styles!\par
+\par
+The table below shows some examples on how to calculate specificity values:\par
+\par
+Selector\tab Specificity Value\tab Calculation\par
+p\tab 1\tab 1\par
+p.test\tab 11\tab 1 + 10\par
+p#demo\tab 101\tab 1 + 100\par
+<p style="color: pink;">\tab 1000\tab 1000\par
+#demo\tab 100\tab 100\par
+.test\tab 10\tab 10\par
+p.test1.test2\tab 21\tab 1 + 10 + 10\par
+#navbar p#demo\tab 201\tab 100 + 1 + 100\par
+*\tab 0\tab 0 (the universal selector is ignored)\par
+The selector with the highest specificity value will win and take effect!\par
+\par
+Equal specificity: the latest rule wins - If the same rule is written twice\par
+ID selectors have a higher specificity than attribute selectors\par
+Contextual selectors are more specific than a single element selector\par
+A class selector beats any number of element selectors \par
+The universal selector (*) and inherited values have a specificity of 0\par
+\b\fs24\par
+Question:- how can we apply same styles to multiple selectors?\par
+Answer:- \b0\fs22 When you group CSS selectors, you apply the same styles to several different elements without repeating the styles in your style sheet. Use a comma to separate multiple grouped selectors.\par
+\par
+div, p \{ color: blue \}\par
+So the blue color applies to all <div> elements and all <p> elements. Without the comma only <p> elements that are a child of a <div> would be red.\par
+\par
+This also applies to all types of selectors.\par
+\par
+p, .blue, #first, div span\{ color : blue \}\par
+This rule applies to:\par
+\par
+<p>\par
+elements of the blue class\par
+element with the ID first\par
+every <span> inside of a <div>\par
+\par
+\b\fs24 Question:- What are the differences between relative and absolute in CSS?\par
+Answer:- \b0\fs22 The position property specifies the type of positioning method used for an element (static, relative, fixed, absolute or sticky).\par
+position: relative places an element relative to its current position without changing the layout around it, whereas position: absolute places an element relative to its parent's position and changing the layout around it.\par
+\par
+\par
+position: relative  (Image: - {{\field{\*\fldinst{HYPERLINK https://miro.medium.com/max/910/1*3N2ousp3yth9ovHA8TpDZw.png }}{\fldrslt{https://miro.medium.com/max/910/1*3N2ousp3yth9ovHA8TpDZw.png\ul0\cf0}}}}\f0\fs22 )\par
+This is where position relative comes in. Move the green box relative to its current position to 20px from the left and top without changing the layout around it. Thus, leaving a gap for the green box where it would have been had it not been position.\par
+\par
+By applying position:  (Image- {{\field{\*\fldinst{HYPERLINK https://miro.medium.com/max/686/1*XDqGjAEa_sNL1OlPQhEb7A.png }}{\fldrslt{https://miro.medium.com/max/686/1*XDqGjAEa_sNL1OlPQhEb7A.png\ul0\cf0}}}}\f0\fs22 )\par
+absolute to the GreenBox, it will not leave any gap where it would have been. The position of the GreenBox is based on its parent position (the dotted border). Thus, moving 20px to the left and bottom from the top-left origin of the dotted border.\par
+\par
+position: relative places an element relative to its current position without changing the layout around it, whereas position: absolute places an element relative to its parent\rquote s position and changing the layout around it.\par
+}
+ 
