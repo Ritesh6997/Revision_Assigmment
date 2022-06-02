@@ -6,10 +6,13 @@ function App() {
   useEffect(()=>{
     getData();
   }, [page]);
-  const getData = async() => {
-    const data = await fetch(`http://localhost:8080/data?page=${page}&_limit=8`);
+  const getData = async () => {
+    console.log(page,"pagein")
+    const data = await fetch(`http://localhost:8080/data?_page=${page}&_limit=8`);
     const res = await data.json();
-      setData([...Data,...res]);
+    if (res) {
+      setData([...Data, ...res]);
+    }
   }
   const scrolltoEnd = () => {
     setPage(page + 1);
