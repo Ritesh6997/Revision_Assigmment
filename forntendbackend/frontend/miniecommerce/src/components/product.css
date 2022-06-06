@@ -1,0 +1,17 @@
+.container{
+    width: 60%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+}
+.productcard{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.productcard img{
+    width: 200px;
+    height: 100px;
+}
