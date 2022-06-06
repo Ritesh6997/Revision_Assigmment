@@ -12,22 +12,28 @@ export default function Product() {
     const Productdata = useSelector((store) => store.productData.productdata);
     const [count, setCount] = useState([1]);
     const [filter, setfilter] = useState([]);
+    const [search,setSearch]=useState(["title",""])
     useEffect(() => {
-        axios.get(`http://localhost:5000/product?page=${page}&sort=${sort}&filter=${filter}`).then((res) => {
+        console.log(filter);
+        axios
+          .get(
+            `http://localhost:5000/product?page=${page}&sort=${sort}&filter=${filter}&search=${search}`
+          )
+          .then((res) => {
             console.log(res.data);
             dispatch(ProductData(res.data.Products));
-            let num = res.data.count
+            let num = res.data.count;
             let count = [];
             for (let i = 1; i <= num; i++) {
-                count.push(i);
+              count.push(i);
             }
             setCount([...count]);
-        });
-    }, [page,sort]);
+          });
+    }, [page,sort,filter,search]);
 
     useEffect(() => {
-        setSearchParams({ page, sort });
-    }, [page, sort, setSearchParams]);
+        setSearchParams({ page, sort,filter,search });
+    }, [page, sort,filter,search, setSearchParams]);
 
     return (
       <div>
@@ -35,16 +41,18 @@ export default function Product() {
           onChange={(e) => {
             {
               e.target.value === ""
-                ? setSort(["_id", 1])
-                : setSort(["price", e.target.value]);
+                ? setfilter(["_id", 1])
+                : setfilter(["category", e.target.value]);
             }
           }}
           name=""
           id=""
         >
-          <option value="">Sort By Price</option>
-          <option value="1">Low to High</option>
-          <option value="-1">High to Low</option>
+          <option value="">Filter By Category</option>
+          <option value="men's clothing">Mens</option>
+          <option value="women's clothing">Womens</option>
+          <option value="jewelery">Jewelery</option>
+          <option value="electronics">Electronics</option>
         </select>
         <select
           onChange={(e) => {
@@ -63,7 +71,7 @@ export default function Product() {
         </select>
         <input
           onChange={(e) => {
-            setSort(e.target.value);
+            setSearch(["title",e.target.value]);
           }}
           type="text"
           name=""
