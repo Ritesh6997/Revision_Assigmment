@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Products = require("../models/productModel");
-
-
-
 router.get("/", async (req, res) => {
     try {
         const page = req.query.page || 1;
@@ -22,11 +19,11 @@ router.get("/", async (req, res) => {
         if (searching[1] !== "") {
             console.log(2)
             filterby = searching[0];
-           filterorder = searching[1]; 
+            filterorder =`*${searching[1]}*`; 
         }
         console.log(filterby,filterorder)
         const count = await Products.find({[filterby]:filterorder}).count({});
-        const products = await Products.find({[filterby]:filterorder}).sort({[sortby]:sortorder }).skip(skip).limit(limit).lean().exec();
+        const products = await Products.find({[filterby]:filterorder},{"description":0,"rating":0}).sort({[sortby]:sortorder }).skip(skip).limit(limit).lean().exec();
         return res.status(200).send({
             "Products": products,
             "count":Math.ceil(count/limit)});

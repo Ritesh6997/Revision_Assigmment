@@ -41,7 +41,7 @@ export default function Product() {
           onChange={(e) => {
             {
               e.target.value === ""
-                ? setfilter(["_id", 1])
+                ? setfilter(["", ""])
                 : setfilter(["category", e.target.value]);
             }
           }}
