@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const UserModel = require("../models/userModel");
 const AddressModel = require("../models/AddressModel");
+const CartModel = require("../models/cartModel");
+const WishlistModel = require("../models/wishlistModel");
 router.get("/", async (req, res) => {
     try {
         const user = await UserModel.find().lean().exec();
@@ -21,6 +23,9 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const user = await UserModel.create(req.body);
+        const cart = await CartModel.create();
+        const wishlist = await WishlistModel.create();
+        const userupdate=await UserModel.findByIdAndUpdate(user._id,{ cart: cart._id,wishlist:wishlist._id })
         return res.status(201).send({ "User": user });
     } catch (error) {
         return res.status(500).send({ "error": error.message });
