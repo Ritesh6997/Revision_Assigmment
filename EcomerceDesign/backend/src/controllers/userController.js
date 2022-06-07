@@ -70,14 +70,5 @@ router.patch("/address/:idx", async (req, res) => {
         return res.status(500).send({ "error": error.message });
     }
 });
-router.delete("/:id/address/:idx", async (req, res) => {
-    try {
-        const address = await AddressModel.findByIdAndDelete(req.params.idx);
-        const user = await UserModel.findByIdAndUpdate(req.params.id,{ arrayFilters: [ { "element": { $gte: 100 } } ] });
-        return res.status(200).send({ "address": address });
-    } catch (error) {
-        return res.status(500).send({ "error": error.message });
-    }
-});
 
 module.exports = router;
