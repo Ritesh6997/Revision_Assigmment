@@ -18,18 +18,25 @@ const theme = createTheme();
 
 export default function Form() {
   const [BrandName, setBrandName] = useState([]);
+  const [CategoryName, setCategoryName] = useState([]);
    useEffect(() => {
      axios.get("http://localhost:5000/brand").then(res => {
        console.log(res.data.brand);
        setBrandName([...res.data.brand]);
      });
+     axios.get("http://localhost:5000/category").then((res) => {
+       console.log(res.data.category);
+       setCategoryName([...res.data.category]);
+     });
    }, []);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    console.log(data.get("size"),data.get("colour"))
     let obj = {
       title: data.get("productTitle"),
       brand: data.get("brand"),
+      category: data.get("category"),
       img: data.get("imgurl"),
       quantity: Number(data.get("quantity")),
       price: Number(data.get("price")),
@@ -40,15 +47,18 @@ export default function Form() {
       obj.title !== "" &&
       obj.brand !== "" &&
       obj.img !== "" &&
-      obj.quantity !== NaN &&
-      obj.price !== NaN &&
+      obj.category !==""&&
+      obj.quantity !== "" &&
+      obj.price !== "" &&
       obj.size !== "" &&
       obj.colour !== ""
     ) {
+      console.log(obj,"obj")
       axios
-        .post("http://localhost:5000/user", obj)
+        .post("http://localhost:5000/product", obj)
         .then(function (response) {
           console.log(response);
+          alert("Product is Added Sucessfully")
         })
         .catch(function (error) {
           console.log(error);
@@ -110,16 +120,39 @@ export default function Form() {
               </Grid>
               <Grid item xs={12} sm={12}>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Brand</InputLabel>
+                  <InputLabel id="demo-simple-select-label">
+                    Brand
+                  </InputLabel>
                   <Select
                     required
                     fullWidth
                     id="brand"
-                    label="Select Brand"
-                    autoComplete="Brand"
+                    name="brand"
+                    label="Select category"
+                    autoComplete="category"
                   >
                     {BrandName.length > 0 &&
                       BrandName.map((ele) => (
+                        <MenuItem value={ele._id}>{ele.name}</MenuItem>
+                      ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    category
+                  </InputLabel>
+                  <Select
+                    required
+                    fullWidth
+                    id="category"
+                    name="category"
+                    label="Select category"
+                    autoComplete="category"
+                  >
+                    {CategoryName.length > 0 &&
+                      CategoryName.map((ele) => (
                         <MenuItem value={ele._id}>{ele.name}</MenuItem>
                       ))}
                   </Select>

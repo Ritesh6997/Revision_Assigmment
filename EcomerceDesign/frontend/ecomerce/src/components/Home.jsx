@@ -10,6 +10,9 @@ export default function Home() {
       <Link to={"/Address"}>
         <Button>Add Address</Button>
       </Link>
+      <Link to={"/Category"}>
+        <Button>Add Category</Button>
+      </Link>
     </div>
   );
 }

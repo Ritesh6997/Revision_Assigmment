@@ -12,17 +12,34 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import axios from "axios";
 const theme = createTheme();
 
 export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    let obj={
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+     if (
+       obj.email !== "" &&
+       obj.password !== "" 
+     ) {
+       axios.post("http://localhost:5000/login", obj)
+         .then(function (response) {
+           console.log(response);
+           localStorage.setItem("id", JSON.stringify(response.data.User._id));
+         })
+         .catch(function (error) {
+           console.log(error);
+         });
+     } else {
+       alert("All filed are Required");
+     }
+
+
   };
 
   return (

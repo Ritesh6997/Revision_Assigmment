@@ -21,12 +21,13 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
       let obj = {
-          name: data.get("firstName"),
+        firstName: data.get("firstName"),
+        lastName:data.get("lastName"),
           email: data.get("email"),
           password: data.get("password"),
           contactNo: data.get("contactNo"),
       };
-      if (obj.name !== "" && obj.email !== "" && obj.password !== "" && obj.contactNo !== "") {
+      if (obj.firstName !== "" && obj.lastName!=="" && obj.email !== "" && obj.password !== "" && obj.contactNo !== "") {
           axios
             .post("http://localhost:5000/user", obj)
             .then(function (response) {
@@ -67,14 +68,21 @@ export default function SignUp() {
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
+              <Grid item display={"flex"} spacing={2} sm={12}>
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
                   required
-                  fullWidth
                   id="firstName"
                   label="First Name"
+                  autoFocus
+                />
+                <TextField
+                  autoComplete="given-lastName"
+                  name="lastName"
+                  required
+                  id="lastName"
+                  label="Last Name"
                   autoFocus
                 />
               </Grid>
@@ -108,9 +116,10 @@ export default function SignUp() {
                   id="password"
                   autoComplete="new-password"
                 />
+                Password should contain "uppercase,lowercase and special
+                character @ / $"
               </Grid>
-              <Grid item xs={12}>
-              </Grid>
+              <Grid item xs={12}></Grid>
             </Grid>
             <Button
               type="submit"
