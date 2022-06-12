@@ -32,46 +32,54 @@ export default function Wishlist() {
         });
     }, []);
     return (
-      <Grid justifyContent={"center"} container spacing={3}>
-        {wishlistData.length > 0 &&
-                wishlistData.map((ele) => (
+      <>
+        <Card>
+          {" "}
+          <Typography variant="h4" sx={{ m: 2 }}>
+            MY CART
+          </Typography>
+        </Card>
+        <Grid justifyContent={"center"} sx={{ mt: 2 }} container spacing={3}>
+          {wishlistData.length > 0 &&
+            wishlistData.map((ele) => (
               <Grid item spacing={3}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                component="img"
-                height="340"
-                className="productimgdiv"
-                image={ele.img}
-                alt="green iguana"
-                onClick={() => {
-                  console.log(ele._id);
-                  navigate(`/products/${ele._id}`);
-                }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {ele.title}
-                </Typography>
-                <Stack justifyContent={"space-between"} direction={"row"}>
-                  <span className="productpricetag" variant="h6">
-                    Price :{ele.price} Rs
-                  </span>
-                </Stack>
-              </CardContent>
-              <CardActions sx={{ justifyContent: "space-between" }}>
-                <Button
-                  onClick={() => {
-                    AddtoCart(ele._id);
-                  }}
-                  variant="contained"
-                  fullWidth
-                >
-                  Add To Cart
-                </Button>
-              </CardActions>
-              </Card>
-            </Grid>
-          ))}
-      </Grid>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardMedia
+                    component="img"
+                    height="340"
+                    className="productimgdiv"
+                    image={ele.img}
+                    alt="green iguana"
+                    onClick={() => {
+                      console.log(ele._id);
+                      navigate(`/products/${ele._id}`);
+                    }}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {ele.title}
+                    </Typography>
+                    <Stack justifyContent={"space-between"} direction={"row"}>
+                      <span className="productpricetag" variant="h6">
+                        Price :{ele.price} Rs
+                      </span>
+                    </Stack>
+                  </CardContent>
+                  <CardActions sx={{ justifyContent: "space-between" }}>
+                    <Button
+                      onClick={() => {
+                        AddtoCart(ele._id);
+                      }}
+                      variant="contained"
+                      fullWidth
+                    >
+                      Add To Cart
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+        </Grid>
+      </>
     );
 }

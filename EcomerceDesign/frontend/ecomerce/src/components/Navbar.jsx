@@ -8,6 +8,7 @@ import "./navbar.css"
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const userId = JSON.parse(localStorage.getItem("id"));
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -34,21 +35,21 @@ export default function Navbar() {
           </Link>
         </Typography>
         <Stack direction="row" variant="h6" spacing={3}>
-          <Typography variant="h6" component="span">
-            <Link className="navbarelement" to={"/product"}>
-              Products
+          <Typography variant="h6"sx={{verticalAlign:"middle"}} component="span">
+            <Link style={{verticalAlign:"middle"}} className="navbarelement" to={"/product"}>
+              PRODUCT
             </Link>
           </Typography>
-          <Typography variant="h6" component="span">
+          {!userId &&<Typography variant="h6" component="span">
             <Link className="navbarelement" to={"/Signup"}>
               SignUp
             </Link>
-          </Typography>
-          <Typography variant="h6" component="span">
+          </Typography>}
+          {!userId &&<Typography variant="h6" component="span">
             <Link className="navbarelement" to={"/login"}>
               Login
             </Link>
-          </Typography>
+          </Typography>}
           <Typography variant="h6" component="span">
             <Link className="navbarelement" to={"/wishlist"}>
               <IconButton color="inherit">
@@ -114,7 +115,9 @@ export default function Navbar() {
         >
           <MenuItem>Profile</MenuItem>
           <MenuItem>MyAccount</MenuItem>
-          <MenuItem>Logout</MenuItem>
+          <MenuItem onClick={() => {
+            localStorage.removeItem("id")
+          }}>Logout</MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>
