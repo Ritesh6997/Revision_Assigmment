@@ -30,10 +30,12 @@ export default function Login() {
        axios.post("http://localhost:5000/login", obj)
          .then(function (response) {
            console.log(response);
-           localStorage.setItem("id", JSON.stringify(response.data.User._id));
+           localStorage.setItem("id", JSON.stringify(response.data.user));
+           alert("Login Successful")
          })
          .catch(function (error) {
            console.log(error);
+           alert("Wrong Email or Password");
          });
      } else {
        alert("All filed are Required");

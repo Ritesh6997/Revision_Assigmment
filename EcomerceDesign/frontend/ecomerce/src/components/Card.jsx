@@ -5,28 +5,62 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
-export default function MediaCard() {
+import { Stack } from "@mui/material"
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import "./card.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+export default function MediaCard({ ele }) {
+  console.log(ele, "vlaue")
+  const navigate = useNavigate();
+  const userId = JSON.parse(localStorage.getItem("id"));
+  let cartId = userId.cart;
+  let wishlistId = userId.wishlist;
+  const AddtoCart = (id) => {
+    console.log(1);
+    axios
+      .patch(`http://localhost:5000/cart/${cartId}/add/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        alert("Added to Cart Sucessfully");
+      });
+  };
+  const AddtoWishList = (id) => {
+    axios
+      .patch(`http://localhost:5000/wishlist/${wishlistId}/add/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        alert("Added to Wishlist Sucessfully");
+      });
+  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="140"
-        image="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png"
+        height="340"
+        className="productimgdiv"
+        image={ele.img}
         alt="green iguana"
+        onClick={() => {
+      console.log(ele._id);
+      navigate(`/products/${ele._id}`);
+    }}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {ele.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
-        </Typography>
+        <Stack  justifyContent={"space-between"} direction={"row"}>
+          <span className="productpricetag" variant="h6">Price :{ele.price} Rs</span>
+          <FavoriteIcon onClick={() => {
+            AddtoWishList(ele._id);
+          }}></FavoriteIcon>
+        </Stack>
       </CardContent>
       <CardActions sx={{ justifyContent: "space-between" }}>
-        <Button size="small">Add To Cart</Button>
-        <Button size="small">Learn More</Button>
+        <Button onClick={() => {
+          AddtoCart(ele._id);
+        }} variant="contained" fullWidth>Add To Cart</Button>
       </CardActions>
     </Card>
   );

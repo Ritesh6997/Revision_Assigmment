@@ -16,7 +16,8 @@ export default function Addaddress() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-      const userID = JSON.parse(localStorage.getItem("id"));
+    const ID = JSON.parse(localStorage.getItem("id"));
+    const userID = ID._id;
       let obj = {
       addressLine1: data.get("Line1"),
       city: data.get("city"),

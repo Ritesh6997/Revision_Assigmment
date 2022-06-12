@@ -9,6 +9,9 @@ import Home from "./components/Home"
 import Brand from './components/Brand';
 import Addaddress from './components/AddAddress';
 import Category from './components/Category';
+import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
+import Wishlist from './components/Wishlist';
 function App() {
   return (
     <div className="App">
@@ -21,7 +24,10 @@ function App() {
         <Route path='/Brand' element={<Brand/>}></Route>
         <Route path='/signUp' element={<SignIn />}></Route>
         <Route path='/login' element={<Login/>}></Route>
-        <Route path='/address' element={<Addaddress/>}></Route>
+        <Route path='/address' element={<Addaddress />}></Route>
+        <Route path='/products/:id' element={<ProductDetail/>}></Route>
+        <Route path='/cart' element={<Cart></Cart>}></Route>
+        <Route path='/wishlist'element={<Wishlist/>}></Route>
       </Routes>
     </div>
   );

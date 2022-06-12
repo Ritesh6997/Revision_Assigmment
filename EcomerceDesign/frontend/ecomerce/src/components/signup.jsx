@@ -32,7 +32,7 @@ export default function SignUp() {
             .post("http://localhost:5000/user", obj)
             .then(function (response) {
               console.log(response);
-              localStorage.setItem("id", JSON.stringify(response.data.User._id));
+              alert("Signup Successful")
             })
             .catch(function (error) {
               console.log(error);

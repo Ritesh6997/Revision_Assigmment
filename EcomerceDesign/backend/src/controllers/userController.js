@@ -4,6 +4,7 @@ const UserModel = require("../models/userModel");
 const AddressModel = require("../models/AddressModel");
 const CartModel = require("../models/cartModel");
 const WishlistModel = require("../models/wishlistModel");
+const authentication=require("../Middleware/authentication");
 router.get("/", async (req, res) => {
     try {
         const user = await UserModel.find().lean().exec();
@@ -12,9 +13,9 @@ router.get("/", async (req, res) => {
         return res.status(500).send({ "error": error.message });
     }
 });
-router.get("/:id", async (req, res) => {
+router.get("/:id",authentication, async (req, res) => {
     try {
-        const user = await UserModel.findById(req.params.id).lean().exec();
+        const user = await UserModel.findById(req.params.id).populate({path:"wishlist cart address"}).lean().exec();
         return res.status(200).send({ "User": user });
     } catch (error) {
         return res.status(500).send({ "error": error.message });
@@ -23,6 +24,16 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
     try {
         const user = await UserModel.create(req.body);
+        const cart = await CartModel.create({products_quity:[]});
+        const wishlist = await WishlistModel.create({productId:[]});
+        const userupdate = await UserModel.findByIdAndUpdate(user._id, { cart: cart._id, wishlist: wishlist._id });
+        return res.status(201).send({ "User": user });
+    } catch (error) {
+        return res.status(500).send({ "error": error.message });
+    }
+});
+router.post("/:id/cart/:idx", async (req, res) => {
+    try {
         const cart = await CartModel.create({products_quity:[]});
         const wishlist = await WishlistModel.create({productId:[]});
         const userupdate = await UserModel.findByIdAndUpdate(user._id, { cart: cart._id, wishlist: wishlist._id });

@@ -50,14 +50,14 @@ export default function Navbar() {
             </Link>
           </Typography>
           <Typography variant="h6" component="span">
-            <Link className="navbarelement" to={"/login"}>
+            <Link className="navbarelement" to={"/wishlist"}>
               <IconButton color="inherit">
                 <FavoriteIcon></FavoriteIcon>
               </IconButton>
             </Link>
           </Typography>
           <Typography variant="h6" component="span">
-            <Link className="navbarelement" to={"/login"}>
+            <Link className="navbarelement" to={"/cart"}>
               <IconButton color="inherit">
                 <ShoppingCartIcon></ShoppingCartIcon>
               </IconButton>
