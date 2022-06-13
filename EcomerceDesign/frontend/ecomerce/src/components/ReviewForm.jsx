@@ -38,7 +38,11 @@ export default function Review({id}) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        sx={{ ml: 2, border: "1px solid green" }}
+        component="main"
+        maxWidth="xs"
+      >
         <CssBaseline />
         <Box
           sx={{

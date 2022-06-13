@@ -12,6 +12,8 @@ import Category from './components/Category';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Wishlist from './components/Wishlist';
+import Profile from './components/Profile';
+import MyAccount from './components/MyAccount';
 function App() {
   return (
     <div className="App">
@@ -23,7 +25,10 @@ function App() {
         <Route path='/Category' element={<Category />}></Route>
         <Route path='/Brand' element={<Brand/>}></Route>
         <Route path='/signUp' element={<SignIn />}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/profile' element={<Profile />}></Route>
+        <Route path='/wishlist' element={<Wishlist />}></Route>
+        <Route path='/Myaccount'element={<MyAccount/>}></Route>
         <Route path='/address' element={<Addaddress />}></Route>
         <Route path='/products/:id' element={<ProductDetail/>}></Route>
         <Route path='/cart' element={<Cart></Cart>}></Route>

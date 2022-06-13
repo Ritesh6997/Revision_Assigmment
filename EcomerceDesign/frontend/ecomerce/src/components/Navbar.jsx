@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Stack ,IconButton,Menu,MenuItem} from "@mui/material"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -8,6 +8,7 @@ import "./navbar.css"
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate=useNavigate
   const userId = JSON.parse(localStorage.getItem("id"));
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -35,21 +36,33 @@ export default function Navbar() {
           </Link>
         </Typography>
         <Stack direction="row" variant="h6" spacing={3}>
-          <Typography variant="h6"sx={{verticalAlign:"middle"}} component="span">
-            <Link style={{verticalAlign:"middle"}} className="navbarelement" to={"/product"}>
+          <Typography
+            variant="h6"
+            sx={{ verticalAlign: "middle" }}
+            component="span"
+          >
+            <Link
+              style={{ verticalAlign: "middle" }}
+              className="navbarelement"
+              to={"/product"}
+            >
               PRODUCT
             </Link>
           </Typography>
-          {!userId &&<Typography variant="h6" component="span">
-            <Link className="navbarelement" to={"/Signup"}>
-              SignUp
-            </Link>
-          </Typography>}
-          {!userId &&<Typography variant="h6" component="span">
-            <Link className="navbarelement" to={"/login"}>
-              Login
-            </Link>
-          </Typography>}
+          {!userId && (
+            <Typography variant="h6" component="span">
+              <Link className="navbarelement" to={"/Signup"}>
+                SignUp
+              </Link>
+            </Typography>
+          )}
+          {!userId && (
+            <Typography variant="h6" component="span">
+              <Link className="navbarelement" to={"/login"}>
+                Login
+              </Link>
+            </Typography>
+          )}
           <Typography variant="h6" component="span">
             <Link className="navbarelement" to={"/wishlist"}>
               <IconButton color="inherit">
@@ -113,11 +126,19 @@ export default function Navbar() {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>MyAccount</MenuItem>
-          <MenuItem onClick={() => {
-            localStorage.removeItem("id")
-          }}>Logout</MenuItem>
+          <Link to={"/profile"} className="navbarelement">
+            <MenuItem>Profile</MenuItem>
+          </Link>
+          <Link to={"/Myaccount"} className="navbarelement">
+            <MenuItem>MyAccount</MenuItem>
+          </Link>
+          <MenuItem
+            onClick={() => {
+              localStorage.removeItem("id");
+            }}
+          >
+            Logout
+          </MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>

@@ -118,7 +118,7 @@ export default function ProductDetail() {
                 <h3 className="productpricetag" variant="h6">
                   Price :{Math.round((1 - discount) * ele.price)} Rs{" "}
                   <span style={{ fontWeight: "normal" }}>
-                    {Math.round(discount * 100)}
+                    ( {Math.round(discount * 100)}
                     %off)
                   </span>
                 </h3>
@@ -165,7 +165,10 @@ export default function ProductDetail() {
           </Box>
         )}
       </div>
-      <Review id={id} />
+      <div style={{display:'flex',alignItems:"flex-start",border:"1px solid red"}}>
+        {" "}
+        <Review  id={id} />
+      </div>
     </div>
   );
 }

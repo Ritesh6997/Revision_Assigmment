@@ -13,6 +13,18 @@ export default function Product() {
   const [sort, setSort] = useState(["_id","1"]);
   const [filter, setfilter] = useState([]);
   const [page, setPage] = useState(Number(searchParams.get("page") || 1));
+  const [BrandName, setBrandName] = useState([]);
+  const [CategoryName, setCategoryName] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:5000/brand").then((res) => {
+      console.log(res.data.brand);
+      setBrandName([...res.data.brand]);
+    });
+    axios.get("http://localhost:5000/category").then((res) => {
+      console.log(res.data.category);
+      setCategoryName([...res.data.category]);
+    });
+  }, []);
   useEffect(() => {
     axios
       .get(
@@ -34,9 +46,16 @@ export default function Product() {
   }, [page, sort, filter,setSearchParams]);
   return (
     <div>
-      <Card sx={{display:"flex", justifyContent:"space-evenly",alignContent:"center", mb:2}}>
+      <Card
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignContent: "center",
+          mb: 2,
+        }}
+      >
         <Link to={"/Addproduct"}>
-          <Button sx={{mt:1}}>Add Product</Button>
+          <Button sx={{ mt: 1 }}>Add Product</Button>
         </Link>
         <Select
           onChange={(e) => {
@@ -53,6 +72,42 @@ export default function Product() {
           <MenuItem value="0">Sort By Price</MenuItem>
           <MenuItem value="1">Low to High</MenuItem>
           <MenuItem value="-1">High to Low</MenuItem>
+        </Select>
+        <Select
+          onChange={(e) => {
+            {
+              e.target.value === "0" || e.target.value === ""
+                ? setSort(["_id", 1])
+                : setSort(["price", e.target.value]);
+            }
+          }}
+          defaultValue={"0"}
+          name=""
+          id=""
+        >
+          <MenuItem value="0">Filter By Category</MenuItem>
+          {CategoryName &&
+            CategoryName.map((ele) => (
+              <MenuItem value={ele.name}>{ele.name}</MenuItem>
+            ))}
+        </Select>
+        <Select
+          onChange={(e) => {
+            {
+              e.target.value === "0" || e.target.value === ""
+                ? setSort(["_id", 1])
+                : setSort(["price", e.target.value]);
+            }
+          }}
+          defaultValue={"0"}
+          name=""
+          id=""
+        >
+          <MenuItem value="0">Brand Name</MenuItem>
+          {BrandName &&
+            BrandName.map((ele) => (
+              <MenuItem value={ele.name}>{ele.name}</MenuItem>
+            ))}
         </Select>
       </Card>
       <Box
@@ -84,8 +139,14 @@ export default function Product() {
       )}
       {count.length > 0 &&
         count.map((ele) => (
-          <Button variant='contained'
-            sx={{m:1,bgcolor:"#dcd8d8",color:"black",fontWeight:"bolder"}}
+          <Button
+            variant="contained"
+            sx={{
+              m: 1,
+              bgcolor: "#dcd8d8",
+              color: "black",
+              fontWeight: "bolder",
+            }}
             onClick={() => {
               setPage(ele);
             }}
